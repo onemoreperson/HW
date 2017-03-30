@@ -19,9 +19,8 @@ y = db0['A']
 
 xtrain, xtest, ytrain, ytest = train_test_split(x, y)
 clf = LogisticRegression(penalty="l2", solver="lbfgs", multi_class="multinomial", max_iter=300, n_jobs=4)
-cvtrain = clf.fit_transform(xtrain)
-cvtest = clf.transform(xtest)
-y_pred = clf.fit(cvtrain, ytrain).predict(cvtest) 
+
+y_pred = clf.fit(xtrain, ytrain).predict(xtest) 
 print(f1_score(ytest, y_pred))          
 print(accuracy_score(ytest, y_pred))        
 print(precision_score(ytest, y_pred))  
